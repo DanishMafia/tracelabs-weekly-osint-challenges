@@ -125,3 +125,31 @@ under MPL-2.0 — se `.claude/skills/NOTICE.md`.
 Påkald den relevante skill når et artefakt matcher dens trigger (fx
 `osint-image-analysis` ved et billedspor, `osint-geolocation` når vi skal
 lokalisere). Skills må gerne kombineres på tværs af et write-up.
+
+## Recipes — genskabelig pipeline
+
+`.claude/recipes/` indeholder scripts og opskrifter der automatiserer de
+gentagende dele af en challenge:
+
+- `fetch-challenge.sh` — parser `Challenge.md`, downloader billeder,
+  fanger alt-text/URL som hints
+- `inspect-image.sh` — EXIF-dump + filnavns-/alt-hint-detektion +
+  CDN-heuristik
+- `new-writeup.sh` — scaffolder `writeup_@handle.md` fra skabelonen
+- `reverse-search.md` — manuel reverse image search-procedure
+- `verify-place.md` — Wikipedia REST + OSM Nominatim curl-snippets
+
+Standardflow:
+
+```bash
+./.claude/recipes/fetch-challenge.sh "2025/Week NN/Challenge.md"
+./.claude/recipes/inspect-image.sh /tmp/weekNN/01_*.jpg
+./.claude/recipes/new-writeup.sh "Week NN" "DitHandle"
+```
+
+## Agents (planlagt)
+
+`.claude/agents/README.md` indeholder en gap-analyse for en kommende
+`osint-specialist` subagent der skal kunne løse en uge autonomt.
+Agent-filen selv eksisterer endnu ikke — se dokumentet for hvad der
+mangler før den kan bygges.
