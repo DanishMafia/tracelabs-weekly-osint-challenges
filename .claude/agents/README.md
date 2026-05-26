@@ -11,8 +11,9 @@ Status er gjort op efter at week 01, 02 og 03 er løst manuelt
 
 ## Ufravigelig regel #0 — NO-CHEAT
 
-**Agenten må aldrig bruge markdown alt-text, URL-filnavne eller
-HTML-title-attributter som primær OSINT-evidens.**
+**Agenten må aldrig bruge markdown alt-text på billed-tags,
+URL-filnavne for billed-src eller HTML-title-attributter på billeder
+som primær OSINT-evidens.**
 
 Hvorfor: i en rigtig OSINT-undersøgelse har efterforskeren ikke adgang
 til challenge-forfatterens privat-filnavne. At læse dem er en
@@ -25,7 +26,20 @@ Tilladte evidens-kilder:
    på kendte personer, arkitektur, geologi, vegetation)
 2. **EXIF/metadata** i billedfilen (GPS, kamera, tidsstempel)
 3. **Eksterne offentlige kilder** (reverse image search hits, Wikipedia,
-   OSM, NPS, kortmaterialer)
+   OSM, NPS, vejr-arkiver, kortmaterialer)
+
+### Hvad reglen IKKE forbyder
+
+- **Opgave-tekst** i `challenge.md` (tema, objektiv, påkrævet
+  svar-format) — det er spørgsmålet, ikke et hint. Læs altid hele
+  opgavebeskrivelsen for at vide hvad der spørges om. En week-opgave
+  kan have flere dele (lokation + temperatur + tidsstempel m.m.) og
+  hvis du springer dem over fordi du ikke læste teksten, fejler du
+  uanset hvor god metoden er.
+- **Filnavne på recipes/scripts/dokumenter** i selve repoet — kun
+  challenge-billed-objekter er regulerede.
+
+### Håndhævelse
 
 Recipes håndhæver reglen by default:
 - `fetch-challenge.sh` printer ikke hints, navngiver lokalt med opake
@@ -33,8 +47,8 @@ Recipes håndhæver reglen by default:
 - `inspect-image.sh` viser ikke hints
 - `audit-hints.sh` er kun til **post-hoc** verifikation
 
-Hvis agenten finder sig selv om at læse `.hints.tsv` eller URL-stier
-udover at downloade dem: **stop, log brud, skift metode**.
+Hvis agenten finder sig selv om at læse `.hints.tsv` eller billed-
+URL-stier (udover at downloade dem): **stop, log brud, skift metode**.
 
 ---
 

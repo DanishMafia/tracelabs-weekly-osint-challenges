@@ -18,20 +18,41 @@ Street View, manuel visuel verifikation) ligger som `.md`-opskrifter.
 
 ## NO-CHEAT-regel
 
-**Markdown alt-text og URL-filnavne er IKKE valid OSINT-evidens.**
-De er accidentielt lækket metadata fra challenge-forfatteren, ikke
-noget en investigator i den virkelige verden ville have adgang til.
+**Markdown alt-text på billed-tags og URL-filnavne for billeder er
+IKKE valid OSINT-evidens.** De er accidentielt lækket metadata fra
+challenge-forfatteren, ikke noget en investigator i den virkelige
+verden ville have adgang til.
 
 Et write-up må kun bygge på:
 
 1. **Visuelt indhold** i selve billedet (skilte, arkitektur, geologi,
    in-image tekst osv.)
 2. **EXIF/metadata** i billedfilen
-3. **Eksterne offentlige kilder** (Wikipedia, OSM, NPS, reverse search-hits)
+3. **Eksterne offentlige kilder** (Wikipedia, OSM, NPS, reverse
+   search-hits, vejr-arkiver osv.)
 
-`fetch-challenge.sh` og `inspect-image.sh` overholder reglen by default.
-Bruger du `audit-hints.sh` skal det stå klart i write-up'et at det kun
-var post-hoc verifikation.
+### Hvad NO-CHEAT IKKE forbyder
+
+- **Opgave-tekst og objektiv-beskrivelse** i `challenge.md` — det er
+  jo *spørgsmålet* der skal besvares. Læs altid hele opgaven for at
+  vide hvad der spørges om (lokation? temperatur? klokkeslæt? flere
+  dele?).
+- **Tema-overskriften** og **påkrævet svar-format** — også del af
+  opgaven.
+
+Reglen forbyder kun brug af utilsigtet lækket metadata på selve
+**billed-objektet** (alt-attribut, src-URL-filnavn, title-attribut).
+
+### Praktisk arbejdsgang
+
+1. **Åbn `challenge.md`** og læs opgave-tekst + objektiv. Vær
+   disciplineret: skip image-markdown's alt-text og src-URL.
+2. Kør `fetch-challenge.sh` — billede får opake hash-navn, alt-text
+   gemmes skjult i `.hints.tsv`.
+3. Brug **kun** det downloadede billede + EXIF + eksterne APIs som
+   evidens.
+4. `audit-hints.sh` må kun bruges som post-hoc verifikation af at
+   write-up'et ikke utilsigtet baserede sig på meta-leaks.
 
 ## Standardflow for en ny challenge
 
