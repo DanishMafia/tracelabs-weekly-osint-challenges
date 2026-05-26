@@ -1,10 +1,17 @@
 #!/bin/bash
-# Inspicer et billede: EXIF + filnavns-hint + dimensioner.
+# Inspicer et billede: EXIF + dimensioner.
 #
 # Brug:
 #   ./inspect-image.sh /tmp/week15/01_challenge.jpg
 #
 # Output: struktureret rapport til stdout.
+#
+# NO-CHEAT REGEL: dette script viser IKKE markdown-alt-text eller
+# URL-filnavne. Den slags er accidentielt lækket metadata fra
+# challenge-forfatteren, ikke gyldig OSINT-evidens. Et write-up må
+# kun bygge på visuel analyse, EXIF og eksterne kilder. Brug
+# ./audit-hints.sh hvis du har brug for at *kontrollere* hvad der
+# blev lækket (post-hoc, ikke som primær evidens).
 
 set -euo pipefail
 
@@ -29,24 +36,10 @@ for IMG in "$@"; do
   echo "  Størrelse: $(du -h "$IMG" | cut -f1)"
   echo
 
-  # Filnavns-hint — fra url-map.txt skrevet af fetch-challenge.sh
-  DIR="$(dirname "$IMG")"
-  if [ -f "$DIR/url-map.txt" ]; then
-    HINT=$(awk -F'\t' -v f="$IMG" '$1==f {print $3}' "$DIR/url-map.txt" || true)
-    URL=$(awk -F'\t' -v f="$IMG" '$1==f {print $2}' "$DIR/url-map.txt" || true)
-    if [ -n "$HINT" ] || [ -n "$URL" ]; then
-      echo "[Markdown/URL hint]"
-      [ -n "$URL" ]  && echo "  URL:  $URL"
-      [ -n "$HINT" ] && echo "  Alt:  $HINT"
-      # Detektér læsbare ord (kan røbe lokation/objekt)
-      WORDS="$(printf '%s\n' "$HINT" "$URL" | tr '_/.-' '    ' | tr -cd 'a-zA-Z \n' | tr -s ' \n' ' ')"
-      if [ -n "$WORDS" ] && echo "$WORDS" | grep -Eiq '[a-z]{4,}'; then
-        echo "  Læsbare tokens: $WORDS"
-        echo "  → Tjek om hint røber lokation/objekt før dyb analyse!"
-      fi
-      echo
-    fi
-  fi
+  # Markdown alt-text og URL-filnavne vises bevidst IKKE her —
+  # de er "challenge-author leak", ikke OSINT-evidens. Se audit-hints.sh
+  # hvis du bagefter vil verificere at write-up'en ikke utilsigtet
+  # baserede sig på dem.
 
   # EXIF — hele dump først, derefter highlight af kritiske felter
   if ! command -v exiftool >/dev/null 2>&1; then
