@@ -45,7 +45,11 @@ if [ -z "$URL_HINT_PAIRS" ]; then
 fi
 
 echo "Output-mappe: $OUT_DIR"
-: > "$OUT_DIR/url-map.txt"
+# NO-CHEAT: vi gemmer URL + alt-text i en SKJULT fil som audit-trail,
+# men printer dem aldrig til stdout. Det forhindrer at en agent eller
+# læser "ser" hintet og bruger det som primær OSINT-evidens.
+: > "$OUT_DIR/.hints.tsv"
+chmod 600 "$OUT_DIR/.hints.tsv"
 N=0
 while IFS=$'\t' read -r URL HINT; do
   [ -z "$URL" ] && continue
@@ -57,18 +61,19 @@ while IFS=$'\t' read -r URL HINT; do
     *.jpg|*.jpeg|*.png|*.gif|*.webp) EXT="${BASENAME##*.}"; STEM="${BASENAME%.*}" ;;
     *) EXT="jpg"; STEM="$BASENAME" ;;
   esac
-  OUT="$OUT_DIR/$(printf '%02d' "$N")_${STEM}.${EXT}"
-  printf 'Henter [%d] %s\n  → %s\n' "$N" "$URL" "$OUT"
-  [ -n "$HINT" ] && echo "  alt/hint: $HINT"
+  # NO-CHEAT: navngiv lokalt med sekvens-nummer + opake hash, IKKE STEM
+  # (STEM kan indeholde domæne-information fra URL'en).
+  HASH="$(echo -n "$URL" | sha1sum | cut -c1-8)"
+  OUT="$OUT_DIR/$(printf '%02d' "$N")_${HASH}.${EXT}"
+  printf 'Henter [%d] → %s\n' "$N" "$OUT"
   curl -sL "$URL" -o "$OUT"
   if ! file "$OUT" | grep -qiE 'image|JPEG|PNG|GIF|WebP'; then
     echo "  ADVARSEL: $OUT ser ikke ud til at være et billede" >&2
   fi
-  # Bevar URL + hint for senere inspect-image.sh
-  printf '%s\t%s\t%s\n' "$OUT" "$URL" "$HINT" >> "$OUT_DIR/url-map.txt"
+  # Skriv til hidden audit-fil — aldrig til stdout
+  printf '%s\t%s\t%s\n' "$OUT" "$URL" "$HINT" >> "$OUT_DIR/.hints.tsv"
 done <<< "$URL_HINT_PAIRS"
 
 echo
 echo "Færdig. $N fil(er) i $OUT_DIR"
-echo "URL-map (file\tURL\thint):"
-column -t -s $'\t' "$OUT_DIR/url-map.txt" 2>/dev/null || cat "$OUT_DIR/url-map.txt"
+echo "(hints gemt i $OUT_DIR/.hints.tsv — vis kun via ./audit-hints.sh)"

@@ -9,11 +9,29 @@ Street View, manuel visuel verifikation) ligger som `.md`-opskrifter.
 
 | Fil | Type | Bruges til |
 |---|---|---|
-| `fetch-challenge.sh` | script | Henter alle billed-URLs fra en `Challenge.md` og downloader dem til `/tmp/<week>/` |
-| `inspect-image.sh` | script | Kører EXIF-analyse + filnavns-hint-detektion + størrelse på et billede |
+| `fetch-challenge.sh` | script | Henter billed-URLs fra `Challenge.md` til `/tmp/<week>/`. Hints (alt-text, URL) gemmes skjult i `.hints.tsv` — printes IKKE |
+| `inspect-image.sh` | script | EXIF-analyse + størrelse + CDN-heuristik. **Viser ikke** filnavn/alt-hints |
+| `audit-hints.sh` | script | **Post-hoc** audit: viser hvad challenge-forfatteren lækkede. Må ikke bruges som inputkilde til write-up |
 | `new-writeup.sh` | script | Scaffolder en ny `writeup_@handle.md` fra skabelonen i CLAUDE.md |
 | `reverse-search.md` | opskrift | Trin-for-trin reverse image search-procedure (Google Lens, Yandex, TinEye) |
 | `verify-place.md` | opskrift | Krydsreferer en stednavns-hypotese mod Wikipedia og OSM |
+
+## NO-CHEAT-regel
+
+**Markdown alt-text og URL-filnavne er IKKE valid OSINT-evidens.**
+De er accidentielt lækket metadata fra challenge-forfatteren, ikke
+noget en investigator i den virkelige verden ville have adgang til.
+
+Et write-up må kun bygge på:
+
+1. **Visuelt indhold** i selve billedet (skilte, arkitektur, geologi,
+   in-image tekst osv.)
+2. **EXIF/metadata** i billedfilen
+3. **Eksterne offentlige kilder** (Wikipedia, OSM, NPS, reverse search-hits)
+
+`fetch-challenge.sh` og `inspect-image.sh` overholder reglen by default.
+Bruger du `audit-hints.sh` skal det stå klart i write-up'et at det kun
+var post-hoc verifikation.
 
 ## Standardflow for en ny challenge
 

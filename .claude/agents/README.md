@@ -9,6 +9,35 @@ Status er gjort op efter at week 01, 02 og 03 er løst manuelt
 
 ---
 
+## Ufravigelig regel #0 — NO-CHEAT
+
+**Agenten må aldrig bruge markdown alt-text, URL-filnavne eller
+HTML-title-attributter som primær OSINT-evidens.**
+
+Hvorfor: i en rigtig OSINT-undersøgelse har efterforskeren ikke adgang
+til challenge-forfatterens privat-filnavne. At læse dem er en
+selv-spoiler der ødelægger læringsværdien og gør write-up'et metodisk
+uærligt.
+
+Tilladte evidens-kilder:
+
+1. **Visuelt indhold** i selve billedet (skilte, in-image tekst, ansigter
+   på kendte personer, arkitektur, geologi, vegetation)
+2. **EXIF/metadata** i billedfilen (GPS, kamera, tidsstempel)
+3. **Eksterne offentlige kilder** (reverse image search hits, Wikipedia,
+   OSM, NPS, kortmaterialer)
+
+Recipes håndhæver reglen by default:
+- `fetch-challenge.sh` printer ikke hints, navngiver lokalt med opake
+  hashes, og gemmer hints i skjult `.hints.tsv`
+- `inspect-image.sh` viser ikke hints
+- `audit-hints.sh` er kun til **post-hoc** verifikation
+
+Hvis agenten finder sig selv om at læse `.hints.tsv` eller URL-stier
+udover at downloade dem: **stop, log brud, skift metode**.
+
+---
+
 ## Hvad er på plads
 
 | Komponent | Sti | Status |
