@@ -114,3 +114,14 @@ Hvad virkede, hvad virkede ikke, hvilke værktøjer var mest effektive.
 - Påmindelse om regler og skabelon-placering
 
 Brug det output som udgangspunkt — spørg brugeren hvilken uge vi arbejder på.
+
+## OSINT-skills
+
+`.claude/skills/osint-*` indeholder kategoriserede skills (e-mail,
+brugernavn, billede, geolokation, infrastruktur osv.). Værktøjslisterne er
+afledt af [Trace Labs / awesome-osint](https://github.com/tracelabs/awesome-osint)
+under MPL-2.0 — se `.claude/skills/NOTICE.md`.
+
+Påkald den relevante skill når et artefakt matcher dens trigger (fx
+`osint-image-analysis` ved et billedspor, `osint-geolocation` når vi skal
+lokalisere). Skills må gerne kombineres på tværs af et write-up.
