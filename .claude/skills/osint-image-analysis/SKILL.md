@@ -35,6 +35,13 @@ af et delt mediefil.
 - [Jimpl EXIF Viewer](https://jimpl.com/) – Simple online tool for checking image metadata (no install required).
 - [FFmpeg](https://ffmpeg.org/) – Multimedia framework for extracting and processing video/audio.
 
+## Yderligere værktøjer (fra Trace Labs OSINT VM, GPL-3.0)
+
+- **exifprobe** – Alternativ EXIF-parser, ofte bedre til usædvanlige eller korrupte filer end ExifTool.
+- **Metagoofil** – Henter offentligt tilgængelige dokumenter (PDF, DOC, XLS) fra et domæne og udtrækker metadata (forfattere, software, stier).
+
+Til steganografi-spor (skjulte data i billeder), se `osint-steganography`.
+
 ## Etisk note
 
 - Ansigtssøgning rejser særlige privacy-spørgsmål — brug kun for

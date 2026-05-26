@@ -27,6 +27,13 @@ internet-eksponeret tjeneste.
 - [Shodan](https://www.shodan.io/) – Search engine for internet-connected devices.
 - [Censys](https://censys.com/) – Internet-wide scanning and intelligence platform.
 
+## Yderligere værktøjer (fra Trace Labs OSINT VM, GPL-3.0)
+
+- **Sublist3r** – Subdomæne-enumerering via passive kilder (søgemaskiner, certifikater).
+- **OSRFramework – Domainfy** – Tjekker domænenavns-tilgængelighed på tværs af TLDs.
+- **Shodan CLI** – Command-line interface til Shodan.
+- **Photon** – Hurtig web-crawler til at indsamle URLs, e-mails, parametre og keys fra en side.
+
 ## Etisk note
 
 - **Kun passive opslag.** Ingen aktiv scanning af mål uden eksplicit

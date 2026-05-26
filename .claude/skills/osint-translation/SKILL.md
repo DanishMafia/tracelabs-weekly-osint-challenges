@@ -26,6 +26,10 @@ billede, posts på sociale medier, eller dokumenter.
 - [Translate Shell](https://github.com/soimort/translate-shell) – Command-line translator powered by Google, Bing, Yandex, and more.
 - [DeepL](https://www.deepl.com/) – High-quality translation service with strong support for European and Asian languages.
 
+## Yderligere værktøjer (fra Trace Labs OSINT VM, GPL-3.0)
+
+- **translate-shell** (`trans`) – Forudinstalleret CLI; samme værktøj som ovenfor.
+
 ## Etisk note
 
 - Oversættelse af følsomme private beskeder hører ikke hjemme i en

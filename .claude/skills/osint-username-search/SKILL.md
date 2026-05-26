@@ -26,6 +26,11 @@ Brug denne skill når et alias/brugernavn er det primære spor.
 - [Sherlock](https://github.com/sherlock-project/sherlock) – Search usernames across social networks from the command line.
 - [Forensic OSINT Full Page Screen Capture](https://chromewebstore.google.com/detail/forensic-osint-full-page/jojaomahhndmeienhjihojidkddkahcn) – Browser extension that captures full web page screens and videos.
 
+## Yderligere værktøjer (fra Trace Labs OSINT VM, GPL-3.0)
+
+- **OSRFramework – Usufy** – Slår et brugernavn op på tværs af platforme.
+- **OSRFramework – Alias Generator** – Genererer alias-varianter (typo, leet, kombinationer) til bredere søgning.
+
 ## Etisk note
 
 Bekræft altid at hits faktisk er samme person — identiske brugernavne på

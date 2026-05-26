@@ -24,6 +24,10 @@ Brug denne skill når et telefonnummer er det primære spor.
 - [PhoneInfoga](https://github.com/sundowndev/phoneinfoga) – Information gathering framework for phone numbers.
 - [Truecaller](https://www.truecaller.com/) – Caller ID and spam lookup service (commercial).
 
+## Yderligere værktøjer (fra Trace Labs OSINT VM, GPL-3.0)
+
+- **OSRFramework – Phonefy** – Slår et telefonnummer op på tværs af platforme.
+
 ## Etisk note
 
 - Ingen opkald, SMS eller anden aktiv kontakt.

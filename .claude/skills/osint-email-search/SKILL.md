@@ -28,6 +28,16 @@ other sources.*
 - [Buster](https://github.com/sham00n/buster) – Advanced tool for email reconnaissance.
 - [Have I Been Pwned](https://haveibeenpwned.com/) – Check if an email address has been exposed in a data breach.
 
+## Yderligere værktøjer (fra Trace Labs OSINT VM, GPL-3.0)
+
+Tilgængelige som CLI på `tlosint-vm`:
+
+- **theHarvester** – Indsamler e-mails, subdomæner, hosts og brugernavne fra offentlige kilder.
+- **h8mail** – E-mail OSINT og breach hunting, integrerer flere breach-databaser.
+- **Infoga** – Indsamler e-mail-information (lokation, IP m.m.) fra åbne kilder.
+- **OSRFramework – Checkfy** – Tjekker mulige varianter af en e-mailadresse.
+- **OSRFramework – Mailfy** – Slår en e-mailadresse op på tværs af platforme.
+
 ## Etisk note
 
 Ingen forsøg på at logge ind eller resette adgangskoder. Kun passive

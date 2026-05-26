@@ -25,6 +25,14 @@ metadata fra en social mediekonto.
 
 - [Instaloader](https://instaloader.github.io/) – Download Instagram photos, videos, captions, and metadata.
 
+## Yderligere værktøjer (fra Trace Labs OSINT VM, GPL-3.0)
+
+- **Tiktok Scraper** – Indsamler offentlige TikTok-videoer og metadata.
+- **Twayback** – Henter slettede tweets via Wayback Machine.
+- **Stweet** – Henter tweets uden API-nøgle.
+- **OSRFramework – Searchfy** – Søger en query på tværs af platforme.
+- **Youtube-DL** (eller `yt-dlp`-fork) – Downloader videoer og metadata fra YouTube og 1000+ andre sider.
+
 ## Etisk note
 
 - Kun **offentlige** konti — ingen omgåelse af privacy-indstillinger.

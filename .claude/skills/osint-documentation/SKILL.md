@@ -27,6 +27,11 @@ også selv om originalen slettes.
 - [GoWitness](https://github.com/sensepost/gowitness) – CLI tool to take screenshots of web pages for evidence collection.
 - [Wayback Machine](https://archive.org/web/) – Browse historical snapshots of websites.
 
+## Yderligere værktøjer (fra Trace Labs OSINT VM, GPL-3.0)
+
+- **HTTrack** – Spejler en hel hjemmeside lokalt for offline-analyse.
+- **Obsidian** – Markdown-baseret note-app; god til at strukturere fund undervejs i en undersøgelse.
+
 ## Etisk note
 
 - Bevarelse er ikke en undskyldning for at gemme PII — anonymisér før
