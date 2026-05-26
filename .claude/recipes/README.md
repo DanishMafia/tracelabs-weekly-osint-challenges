@@ -13,6 +13,8 @@ Street View, manuel visuel verifikation) ligger som `.md`-opskrifter.
 | `inspect-image.sh` | script | EXIF-analyse + størrelse + CDN-heuristik. **Viser ikke** filnavn/alt-hints |
 | `audit-hints.sh` | script | **Post-hoc** audit: viser hvad challenge-forfatteren lækkede. Må ikke bruges som inputkilde til write-up |
 | `new-writeup.sh` | script | Scaffolder en ny `writeup_@handle.md` fra skabelonen i CLAUDE.md |
+| `decode-w3w.sh` | script | Dekoder en what3words-adresse til GPS via OG-meta-scrape + OSM reverse-geocoding (ingen API-key) |
+| `flight-trace.sh` | script | Sporer et fly (halenummer) på en specifik dato via offentlige Mastodon-tracker-konti (`@elonjet` m.fl.) |
 | `reverse-search.md` | opskrift | Trin-for-trin reverse image search-procedure (Google Lens, Yandex, TinEye) |
 | `verify-place.md` | opskrift | Krydsreferer en stednavns-hypotese mod Wikipedia og OSM |
 
