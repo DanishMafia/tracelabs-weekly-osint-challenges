@@ -126,6 +126,22 @@ Påkald den relevante skill når et artefakt matcher dens trigger (fx
 `osint-image-analysis` ved et billedspor, `osint-geolocation` når vi skal
 lokalisere). Skills må gerne kombineres på tværs af et write-up.
 
+### Red-team-skills
+
+`.claude/skills/redteam-*` dækker autoriseret offensive-security-recon:
+
+- `redteam-surface` — attack surface mapping (subdomæner, eksponerede
+  services, cloud-buckets, tech-stack-fingerprinting)
+- `redteam-phishing-recon` — pre-engagement recon til autoriserede
+  phishing-tests (e-mail-format, employee-enum, breach-data)
+- `redteam-code-leaks` — find offentlige kode-/secret-læk (GitHub-dorks,
+  gitleaks, exposed configs, paste-sites)
+- `redteam-ttp` — adversary emulation og MITRE ATT&CK-mapping
+
+**Disse skills må kun bruges mod skriftligt autoriseret scope.** De er
+ikke en del af Trace Labs Weekly Challenges-flow, men ligger her som
+fælles OSINT-værktøjskasse for andre engagements.
+
 ## Recipes — genskabelig pipeline
 
 `.claude/recipes/` indeholder scripts og opskrifter der automatiserer de
