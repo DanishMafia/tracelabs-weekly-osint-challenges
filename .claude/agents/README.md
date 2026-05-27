@@ -1,11 +1,43 @@
-# OSINT Specialist Agent — gap-analyse og roadmap
+# OSINT Specialist Agent
 
-Dette dokument beskriver hvad der er på plads og hvad der mangler, før vi
-kan bygge en `osint-specialist` subagent der selvstændigt kan løse
-ugentlige challenges fra start til slut.
+Bygget på baggrund af 10 verificerede write-ups (uge 01-10), 6 recipes,
+13 skills og 3 iterationer af policy. Agenten kan løse en uges
+challenge autonomt fra start til slut.
 
-Status er gjort op efter at week 01, 02 og 03 er løst manuelt
-(via skills + recipes) med 3/3 korrekte svar.
+## Filer i denne mappe
+
+| Fil | Indhold |
+|---|---|
+| `osint-specialist.md` | **Selve agent-definitionen** — frontmatter + system-prompt |
+| `playbook.md` | Decision flow: artefakt-type → skill-kæde → recipes |
+| `confidence-rubric.md` | High / medium / low / abandoned-regler |
+| `ethics-escalation.md` | Hvornår agenten skal stoppe og spørge brugeren |
+| `output-schema.md` | Struktureret resultat-format agenten returnerer |
+| `lessons-learned.md` | Score-tavle og forbedrings-historik fra uge 01-10 |
+| `README.md` | Denne fil (oversigt + oprindelig gap-analyse) |
+
+## Sådan bruger du agenten
+
+Fra hoved-Claude-sessionen:
+
+```
+Agent(subagent_type="osint-specialist",
+      prompt="Løs uge 11. Lever et redacted dansk write-up.")
+```
+
+Eller via opgave-beskrivelser som:
+- "Lav write-up for ugens challenge"
+- "Løs uge NN"
+- "Verificér min hypotese for [artefakt]"
+
+Agenten følger CLAUDE.md, holder no-cheat-disciplin, og rapporterer
+tilbage med struktureret output (se `output-schema.md`).
+
+---
+
+## Oprindelig gap-analyse (historisk)
+
+*Dette afsnit blev skrevet før agenten var bygget. Holdt for historik.*
 
 ---
 
