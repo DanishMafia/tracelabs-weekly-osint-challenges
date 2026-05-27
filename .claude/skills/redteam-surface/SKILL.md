@@ -51,6 +51,14 @@ red-team-vinklen "hvad kan udnyttes".
 - [S3Scanner](https://github.com/sa7mon/S3Scanner) – S3-bucket-enumerering.
 - [GCPBucketBrute](https://github.com/RhinoSecurityLabs/GCPBucketBrute) – GCS-bucket-brute-force.
 
+## Companion-recipes
+
+- `.claude/recipes/subfinder-passive.sh` — passiv subdomain enum.
+- `.claude/recipes/shodan-recon.sh` — Shodan-opslag (host, facet, count, DNS).
+  Brug `facet` til at finde top-porte/org/asn for et mål uden at bruge
+  query-credits, før du går videre til `host`/`search`.
+- `.claude/recipes/dnstwist-wrap.sh` — lookalike-domæner.
+
 ## Pivots og signaler
 
 - **Dev/staging-subdomæner** (`dev.`, `staging.`, `test.`) lækker ofte
