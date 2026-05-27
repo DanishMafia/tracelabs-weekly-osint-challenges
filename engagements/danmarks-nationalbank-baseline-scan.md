@@ -223,6 +223,74 @@ Vi anbefaler at denne dimension aktiveres når kontrakt etableres.
 osint-multi-search, osint-image-analysis (indirekte),
 redteam-surface, osint-documentation, redteam-phishing-recon).
 
+### Addendum (library-udvidelse 2026-05-27 20:20 UTC)
+
+Efter første pilot blev 4 nye recipes bygget og kørt mod
+DNB-watchlisten — fyldte konkrete huller fra første scan:
+
+**`appstore-check.sh`** — Apple iTunes Search + Google Play HTML.
+Fund: **Ingen fake DNB-banking-apps** i hverken Apple App Store
+eller Google Play (per DK-country). Positivt: en centralbank har
+typisk ingen consumer-app, så impersonations-overflade på app-stores
+er lav for DNB specifikt.
+
+**`rdap-recon.sh`** — RDAP/HTTPS-baseret whois (løser port-43-
+blokering). Konkrete registrar+dato-attribuering for ikke-.dk-
+lookalikes:
+
+| Domæne | Registreret | Registrar | Tolkning |
+|---|---|---|---|
+| `nationalbanken.com` | **2004-04-22** | EuroDNS | DNB long-standing (22 år) |
+| `nationalbanken.org` | 2025-01-24 | EuroDNS | DNB recent build-out |
+| `nationalbanken.shop` | 2025-01-24 | EuroDNS | DNB recent build-out |
+| `nationalbanken.net` | 2025-12-30 | **Sav.com LLC** | **IKKE DNB — domain-broker** |
+| `nationalbanken.xyz` | 2026-02-26 | **GMO Internet** | **IKKE DNB — bekræfter gap** |
+
+Det er nu **definitivt verificeret** at `.net` og `.xyz` er ikke i
+DNB's portefølje. P1-anbefalingen om opkøb står ved magt.
+
+DNB har bygget størstedelen af defensiv-porteføljen i **januar
+2025** — en relativt nylig modernisering. `.com`-tilstedeværelsen
+fra 2004 viser at de tidligt forstod brand-defensiv. .dk-domæner
+kan ikke RDAP-tjekkes (DK Hostmaster understøtter ikke RDAP — workaround
+kræver manuelt webform-opslag).
+
+**`headers-security.sh`** — security-headers audit.
+
+| Domæne | Score | HSTS | CSP | X-Frame |
+|---|---|---|---|---|
+| `www.nationalbanken.dk` | **B (5/8)** | ✓ preload | ✓ strict | ✓ SAMEORIGIN |
+| `nationalbanken.com` | F (0/8) — 503 | — | — | — |
+| `nationalbanken.org` | F (0/8) — 503 | — | — | — |
+| `nationalbanken.xyz` | F (0/8) — 200 | — | — | — |
+| `natinalbanken.dk` | F (0/8) — 503 | — | — | — |
+| `newbanknotes.dk` | F (0/8) — 503 | — | — | — |
+
+DNB's egen produktion er solid (B-score). Alle DNB-ejede lookalikes
+returnerer 503 (Azure App Service "site stopped") — det er deres
+defensive parking-pattern. `nationalbanken.xyz` returnerer 200 men
+også 0/8 headers — det er en parking-side hos GMO Internet.
+
+**`brand-permutations.sh`** — udvidet permutation-engine.
+Genererede **215 unikke kandidater** for `nationalbanken.dk`,
+inklusive:
+- 3 IDN-homoglyph-versioner (`xn--natinalbanken-l7k.dk`,
+  `xn--nationalbankn-73k.dk`, `xn--ntionalbanken-w1k.dk`) — cyrillic
+  visual look-alikes
+- Bitsquat-permutationer (1-bit flip på hver karakter i basenavnet)
+- Prefix/suffix-kombinationer (`mitnationalbanken.dk`,
+  `login-nationalbanken.dk`, etc.)
+- 40+ alternative TLDs
+
+Resolved sample af top-100: kun 1 hit (kendt `natinalbanken.dk`).
+Det betyder de fleste permutationer er stadig ledige til defensiv
+registrering — eller venter på attacker-grab.
+
+**Anbefaling P7 (ny):** DNB bør overveje at registrere de 3
+**IDN-homoglyph-versioner** defensivt. De er **næsten umulige at
+se forskel på visuelt** og er high-value-targets for visuelle
+phishing-kampagner.
+
 ---
 
 ## 8. Begrænsninger og noter

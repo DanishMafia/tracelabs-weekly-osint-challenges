@@ -41,6 +41,10 @@ Street View, manuel visuel verifikation) ligger som `.md`-opskrifter.
 | `socmint-mastodon.sh` | script | Fediverse SOCMINT: `lookup`/`instance-search`/`public-feed`/`check-handles`. Per-instance API. Hashtag-timeline virker uden auth |
 | `socmint-meta-ads.sh` | script | Meta Ad Library search. Kræver `META_AD_LIBRARY_TOKEN` (gratis Meta dev-app). Søger annoncer der nævner brand i specifik country |
 | `socmint-telegram.sh` | script | Telegram passive recon via t.me public previews: `channel`/`index-search`/`check-handles`. DDG site:t.me fallback til index-search. Begrænset uden MTProto/Bot-auth |
+| `appstore-check.sh` | script | Apple iTunes Search API + Google Play HTML-scrape: `apple`/`google`/`bank-check`/`verify`. Brand-protection mod fake banking-apps. Ingen auth krævet |
+| `rdap-recon.sh` | script | RDAP (HTTPS-WHOIS) via rdap.org-proxy: `domain`/`bulk`/`ip`/`registrar`. Virker hvor port-43-WHOIS er blokeret af firewall. Understøtter .com/.net/.org/.eu/.io m.fl. (.dk har desværre ingen RDAP) |
+| `headers-security.sh` | script | Security headers + TLS audit: HSTS, CSP, X-Frame, X-Content, Referrer, Permissions, COOP, COEP. A-F score. Single-URL eller `--batch d1,d2,...`. Afslører ofte fake-sites pga. dårlig hygiejne |
+| `brand-permutations.sh` | script | Udvidet permutation-generator (omit/insert/repeat/swap/homoglyph-ASCII/IDN-homoglyph/bitsquat/prefix-suffix/TLD-variants). 200+ kandidater pr. brand. `--resolve` + `--only-registered` for DoH-resolve |
 | `reverse-search.md` | opskrift | Trin-for-trin reverse image search-procedure (Google Lens, Yandex, TinEye) |
 | `verify-place.md` | opskrift | Krydsreferer en stednavns-hypotese mod Wikipedia og OSM |
 
