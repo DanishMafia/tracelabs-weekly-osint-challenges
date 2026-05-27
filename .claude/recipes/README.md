@@ -15,6 +15,10 @@ Street View, manuel visuel verifikation) ligger som `.md`-opskrifter.
 | `new-writeup.sh` | script | Scaffolder en ny `writeup_@handle.md` fra skabelonen i CLAUDE.md |
 | `decode-w3w.sh` | script | Dekoder en what3words-adresse til GPS via OG-meta-scrape + OSM reverse-geocoding (ingen API-key) |
 | `flight-trace.sh` | script | Sporer et fly (halenummer) på en specifik dato via offentlige Mastodon-tracker-konti (`@elonjet` m.fl.) |
+| `parse-headers.sh` | script | Parser HTTP-headers fra `curl -I` / stdin og auto-dekoder custom-headers (`X-*`) base64/hex (Uge 14-mønster) |
+| `decode-metadata.sh` | script | Scanner alle EXIF/IPTC/XMP-felter på et billede for base64/hex/ROT13/URL-encoded payloads og auto-dekoder dem (Uge 12-mønster: fake GPS + skjult hint i `Note`) |
+| `translate-cjk.sh` | script | Oversætter kinesisk/japansk/koreansk til engelsk + dansk via MyMemory + udskriver tegn-for-tegn Unicode kode-points og traditionel/forenklet-heuristik |
+| `maritime-vessel.sh` | script | Genererer deep-links til VesselFinder/MarineTraffic/FleetMon/Equasis/GISIS for skibsnavn, IMO eller MMSI (MID → flag-stat) |
 | `reverse-search.md` | opskrift | Trin-for-trin reverse image search-procedure (Google Lens, Yandex, TinEye) |
 | `verify-place.md` | opskrift | Krydsreferer en stednavns-hypotese mod Wikipedia og OSM |
 
