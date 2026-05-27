@@ -1,7 +1,7 @@
-# Læringspunkter og forbedringer — uge 01-10
+# Læringspunkter og forbedringer — uge 01-11
 
 Dette dokument samler hvad jeg har lært og hvad der er ændret i
-skills, recipes og policy efter at have løst de første 10 uger.
+skills, recipes og policy efter at have løst de første 11 uger.
 Dækker både rigtige svar og fejl (week 8 var forkert i første gennemløb
 og blev rettet).
 
@@ -19,13 +19,14 @@ og blev rettet).
 | 08 | Zoo (webcam) | **Whipsnade → korrigeret til San Diego** | San Diego Zoo | ✅* |
 | 09 | Low-context geo | Kralingse Plas, Rotterdam | Kralingse Plas, Rotterdam | ✅ |
 | 10 | what3words | Merlion Park, Singapore | Merlion Park, Singapore | ✅ |
+| 11 | Oversættelse (CJK) | "Jeg ved det ikke, jeg kan ikke tale kinesisk" | "I don't know, I don't speak Chinese" | ✅ |
 
 \* Week 8 var forkert i første hypotese (Whipsnade); rettet via webcam-
 feed-verifikation. Dokumenteret som fejl + læring i writeup'et.
 
-**Endeligt: 10/10 korrekte med 1 selv-rettet fejl.**
+**Endeligt: 11/11 korrekte med 1 selv-rettet fejl.**
 
-## Nye recipes (uge 01-10)
+## Nye recipes (uge 01-11)
 
 | Script | Tilføjet i | Hvad det løser |
 |---|---|---|
@@ -35,6 +36,7 @@ feed-verifikation. Dokumenteret som fejl + læring i writeup'et.
 | `audit-hints.sh` | uge 05 | Post-hoc verifikation af no-cheat-disciplin |
 | `decode-w3w.sh` | **uge 10** | what3words → GPS via OG-meta-scrape |
 | `flight-trace.sh` | **uge 06** | Halenummer + dato → landings-by via Mastodon API |
+| `translate-cjk.sh` | **uge 11 (foreslået)** | CJK-tekst → maskinoversættelse via `trans` (CLI) med fallback til MyMemory API; returnerer pinyin + oversættelse |
 
 ## Policy-forbedringer
 
@@ -88,11 +90,23 @@ geohash, Maidenhead, MGRS m.fl. En skill der genkender og dekoder
 disse ville være nyttig. Den ligger lige nu indirekte i
 `osint-geolocation`.
 
+### `osint-translation` (uge 11)
+- **Traditionelt vs. forenklet kinesisk er kontekstuelt relevant** (uge 11).
+  Tegnformen (會 vs. 会, 說 vs. 说, 國 vs. 国) afslører om sproget er
+  Taiwan/Hongkong/Macao-orienteret (traditionelt) eller Fastlandskina/Singapore
+  (forenklet). Dette kan indsnævre et efterforskningsmål geografisk.
+- **Tegn-for-tegn-analyse er mere robust end maskinoversættelse alene** (uge 11).
+  At bekræfte hvert CJK-tegn individuelt fanger potentielle OCR-fejl og
+  homoglypfer der kan vildlede oversættelses-API'er.
+- **`trans` (translate-shell) var ikke installeret** i standardmiljøet.
+  Brug Unicode-analyse + web-søgning som fallback. En `translate-cjk.sh`
+  recipe med MyMemory API fallback bør oprettes.
+
 ## Recipes der mangler (fra agent-roadmap)
 
 Tidligere identificerede mangler i `.claude/agents/README.md`:
 
-| Recipe | Status efter uge 10 |
+| Recipe | Status efter uge 11 |
 |---|---|
 | `parse-headers.sh` | Ikke bygget endnu (week 14-typer) |
 | `username-pivot.sh` | Ikke bygget endnu |
@@ -100,6 +114,7 @@ Tidligere identificerede mangler i `.claude/agents/README.md`:
 | `decode-payload.sh` | Delvist løst af `decode-w3w.sh`, men generisk version mangler |
 | `flight-trace.sh` | **Tilføjet i uge 06** ✓ |
 | `decode-w3w.sh` | **Tilføjet i uge 10** ✓ |
+| `translate-cjk.sh` | **Foreslået i uge 11** — CJK tekst → oversættelse via `trans`/MyMemory API |
 
 ## Metodologiske læringer
 
