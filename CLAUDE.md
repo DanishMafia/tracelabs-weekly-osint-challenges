@@ -142,6 +142,33 @@ lokalisere). Skills må gerne kombineres på tværs af et write-up.
 ikke en del af Trace Labs Weekly Challenges-flow, men ligger her som
 fælles OSINT-værktøjskasse for andre engagements.
 
+Companion-recipes: `subfinder-passive.sh`, `github-dork.sh`,
+`hibp-check.sh`, `attck-pivot.sh`, `dnstwist-wrap.sh` matcher 1:1
+mod skill-familien.
+
+### Blue-team-skills
+
+`.claude/skills/blueteam-*` dækker defensiv-security — pendant til
+red-team-familien:
+
+- `blueteam-detection` — detection engineering (Sigma, SPL/KQL,
+  alert-tuning)
+- `blueteam-hunting` — proaktiv threat hunting (hypoteser, YARA,
+  baseline-afvigelser)
+- `blueteam-ir` — incident response-workflow (PICERL, runbooks,
+  ransomware-respons)
+- `blueteam-logs` — log-analyse og timeline-rekonstruktion
+  (Sysmon, auditd, cloud audit)
+
+### Specialiserede OSINT-skills (nyere)
+
+- `osint-crypto` — wallet-tracing, blockchain-pivotering,
+  ransomware-payment-tracking (BTC, ETH, EVM-chains).
+  Companion-recipe: `wallet-trace.sh`.
+- `osint-ai-content` — verifikation af AI-genereret indhold
+  (deepfakes, GAN-faces, C2PA Content Credentials, voice clones,
+  AI-text-detektion).
+
 ## Recipes — genskabelig pipeline
 
 `.claude/recipes/` indeholder scripts og opskrifter der automatiserer de

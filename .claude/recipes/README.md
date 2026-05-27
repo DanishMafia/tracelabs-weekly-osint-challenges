@@ -25,6 +25,12 @@ Street View, manuel visuel verifikation) ligger som `.md`-opskrifter.
 | `archive-url.sh` | script | Wayback Machine — `check` (seneste snapshot), `save` (Save Page Now) eller `list` (CDX-historik) |
 | `wikidata-coords.sh` | script | Wikidata SPARQL — find præcise koordinater for stednavn eller list steder i radius af en koordinat |
 | `username-pivot.sh` | script | Søger et alias på tværs af 600+ sider via WhatsMyName-databasen. Default-limit 100; sæt `--limit 0` for fuld scan |
+| `subfinder-passive.sh` | script | Passiv subdomæne-enumerering via crt.sh + HackerTarget + OTX + urlscan. Ingen brute-force. `--resolve` tilføjer DoH-lookup |
+| `github-dork.sh` | script | Kører batch GitHub kode-søgninger med default-dork-bibliotek (secrets, configs, keys). Kræver `GITHUB_TOKEN`. `--dorks-file` for egen liste |
+| `hibp-check.sh` | script | Have I Been Pwned: `domain` mode er public; `email`/`pastes` mode kræver `HIBP_API_KEY` |
+| `attck-pivot.sh` | script | MITRE ATT&CK-bundle (cached): slå teknik/group/software op, søg fritekst, eller list groups der bruger en teknik |
+| `dnstwist-wrap.sh` | script | Lookalike-domain-tjek. Bruger `dnstwist` hvis installeret; ellers indbygget typo+homoglyph-generator + DoH-resolve |
+| `wallet-trace.sh` | script | Initial recon på BTC/ETH-adresse: balance, seneste tx, ERC-20-transfers. Auto-detect chain. Ingen API-key krævet for basic |
 | `reverse-search.md` | opskrift | Trin-for-trin reverse image search-procedure (Google Lens, Yandex, TinEye) |
 | `verify-place.md` | opskrift | Krydsreferer en stednavns-hypotese mod Wikipedia og OSM |
 
