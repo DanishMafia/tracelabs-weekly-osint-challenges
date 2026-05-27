@@ -19,6 +19,12 @@ Street View, manuel visuel verifikation) ligger som `.md`-opskrifter.
 | `decode-metadata.sh` | script | Scanner alle EXIF/IPTC/XMP-felter på et billede for base64/hex/ROT13/URL-encoded payloads og auto-dekoder dem (Uge 12-mønster: fake GPS + skjult hint i `Note`) |
 | `translate-cjk.sh` | script | Oversætter kinesisk/japansk/koreansk til engelsk + dansk via MyMemory + udskriver tegn-for-tegn Unicode kode-points og traditionel/forenklet-heuristik |
 | `maritime-vessel.sh` | script | Genererer deep-links til VesselFinder/MarineTraffic/FleetMon/Equasis/GISIS for skibsnavn, IMO eller MMSI (MID → flag-stat) |
+| `url-recon.sh` | script | Passiv domæne-rekognoscering (DNS via DoH, Certificate Transparency, Wayback, urlscan.io) uden at probe selve serveren |
+| `geocode.sh` | script | Forward/reverse geocoding via OSM Nominatim (ingen nøgle, rate-limit ≤1/sek) |
+| `qr-decode.sh` | script | Dekoder QR/stregkoder via `zbarimg` med ImageMagick-preprocessing-fallback (gråtone, threshold) |
+| `archive-url.sh` | script | Wayback Machine — `check` (seneste snapshot), `save` (Save Page Now) eller `list` (CDX-historik) |
+| `wikidata-coords.sh` | script | Wikidata SPARQL — find præcise koordinater for stednavn eller list steder i radius af en koordinat |
+| `username-pivot.sh` | script | Søger et alias på tværs af 600+ sider via WhatsMyName-databasen. Default-limit 100; sæt `--limit 0` for fuld scan |
 | `reverse-search.md` | opskrift | Trin-for-trin reverse image search-procedure (Google Lens, Yandex, TinEye) |
 | `verify-place.md` | opskrift | Krydsreferer en stednavns-hypotese mod Wikipedia og OSM |
 
