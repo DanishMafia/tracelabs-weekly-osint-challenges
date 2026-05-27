@@ -147,9 +147,23 @@ Standardflow:
 ./.claude/recipes/new-writeup.sh "Week NN" "DitHandle"
 ```
 
-## Agents (planlagt)
+## Agents
 
-`.claude/agents/README.md` indeholder en gap-analyse for en kommende
-`osint-specialist` subagent der skal kunne løse en uge autonomt.
-Agent-filen selv eksisterer endnu ikke — se dokumentet for hvad der
-mangler før den kan bygges.
+`.claude/agents/osint-specialist.md` er en subagent der løser en uges
+challenge autonomt fra start til slut. Brug den når brugeren siger
+"løs uge NN" eller leverer et OSINT-artefakt:
+
+```
+Agent(subagent_type="osint-specialist",
+      prompt="Løs uge NN. Lever redacted dansk write-up.")
+```
+
+Agenten følger no-cheat-reglen, kalder relevante skills + recipes,
+trianglerer mod ekstern API, og rapporterer struktureret tilbage. Se:
+
+- `.claude/agents/osint-specialist.md` — agent-definitionen
+- `.claude/agents/playbook.md` — decision flow
+- `.claude/agents/confidence-rubric.md` — confidence-regler
+- `.claude/agents/ethics-escalation.md` — stop-kriterier
+- `.claude/agents/output-schema.md` — output-format
+- `.claude/agents/lessons-learned.md` — historik og golden test set
