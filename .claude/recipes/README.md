@@ -26,6 +26,7 @@ Street View, manuel visuel verifikation) ligger som `.md`-opskrifter.
 | `wikidata-coords.sh` | script | Wikidata SPARQL — find præcise koordinater for stednavn eller list steder i radius af en koordinat |
 | `username-pivot.sh` | script | Søger et alias på tværs af 600+ sider via WhatsMyName-databasen. Default-limit 100; sæt `--limit 0` for fuld scan |
 | `subfinder-passive.sh` | script | Passiv subdomæne-enumerering via crt.sh + HackerTarget + OTX + urlscan. Ingen brute-force. `--resolve` tilføjer DoH-lookup |
+| `shodan-recon.sh` | script | Shodan API-wrapper: `host`/`search`/`count`/`facet`/`dns`/`reverse`/`info`. `count` + `facet` koster ingen query-credits. Kræver `SHODAN_API_KEY` |
 | `github-dork.sh` | script | Kører batch GitHub kode-søgninger med default-dork-bibliotek (secrets, configs, keys). Kræver `GITHUB_TOKEN`. `--dorks-file` for egen liste |
 | `hibp-check.sh` | script | Have I Been Pwned: `domain` mode er public; `email`/`pastes` mode kræver `HIBP_API_KEY` |
 | `attck-pivot.sh` | script | MITRE ATT&CK-bundle (cached): slå teknik/group/software op, søg fritekst, eller list groups der bruger en teknik |

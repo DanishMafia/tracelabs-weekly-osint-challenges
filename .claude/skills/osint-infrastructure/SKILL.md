@@ -34,6 +34,23 @@ internet-eksponeret tjeneste.
 - **Shodan CLI** – Command-line interface til Shodan.
 - **Photon** – Hurtig web-crawler til at indsamle URLs, e-mails, parametre og keys fra en side.
 
+## Companion-recipe
+
+`.claude/recipes/shodan-recon.sh` wrapper Shodan API:
+
+```bash
+export SHODAN_API_KEY=...
+./.claude/recipes/shodan-recon.sh info                              # credits + plan
+./.claude/recipes/shodan-recon.sh host 8.8.8.8                      # services, vulns, certs
+./.claude/recipes/shodan-recon.sh count 'product:nginx country:DK'  # gratis
+./.claude/recipes/shodan-recon.sh facet 'org:"Example Inc"' port    # top porte
+./.claude/recipes/shodan-recon.sh dns example.com,sub.example.com   # → IPs
+./.claude/recipes/shodan-recon.sh reverse 1.2.3.4                   # → hostnames
+```
+
+`count` og `facet` koster ingen query-credits — brug dem til volumen-
+spørgsmål før du laver `host`/`search`-opslag der trækker credits.
+
 ## Etisk note
 
 - **Kun passive opslag.** Ingen aktiv scanning af mål uden eksplicit
