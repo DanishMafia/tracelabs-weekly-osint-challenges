@@ -52,28 +52,36 @@ export SHODAN_API_KEY=...
 spørgsmål før du laver `host`/`search`-opslag der trækker credits.
 
 **Censys** (`.claude/recipes/censys-recon.sh`) — stærk på cert-historik
-og host-attribuering:
+og host-attribuering. To auth-modes med forskellige capabilities:
 
 ```bash
-# Search v2 (klassisk): API_ID + API_SECRET
-export CENSYS_USER=...    # API ID
-export CENSYS_TOKEN=...   # API secret
-
-# Platform API (nyere): e-mail + PAT + endpoint
+# Platform API v3 (nyere, Bearer PAT)
 export CENSYS_USER=you@example.com
-export CENSYS_TOKEN=...
-export CENSYS_ENDPOINT=https://api.platform.censys.io
-
+export CENSYS_TOKEN=censys_...
+export CENSYS_ENDPOINT=https://api.platform.censys.io/v3
 ./.claude/recipes/censys-recon.sh host 8.8.8.8
+./.claude/recipes/censys-recon.sh hosts 8.8.8.8,1.1.1.1            # batch
+./.claude/recipes/censys-recon.sh timeline 1.1.1.1 --from 2026-04-01
+./.claude/recipes/censys-recon.sh web dns.google:443                # webproperty
+./.claude/recipes/censys-recon.sh cert <sha256>
+
+# Search v2 (klassisk, Basic Auth — search + aggregate)
+export CENSYS_USER=<API_ID>
+export CENSYS_TOKEN=<API_SECRET>
 ./.claude/recipes/censys-recon.sh search 'services.service_name: HTTP and location.country_code: DK'
 ./.claude/recipes/censys-recon.sh aggregate 'services.service_name: SSH' services.port
 ./.claude/recipes/censys-recon.sh cert-search 'names: example.com'
-./.claude/recipes/censys-recon.sh names 1.2.3.4
 ```
 
+**Vigtigt:** Platform v3 PAT understøtter KUN direct asset-lookup
+(host, cert, webproperty, timeline). `search`/`aggregate` kræver
+Search v2-credentials (API ID + secret). Recipe fejler klart hvis du
+forsøger en subkommando der ikke matcher mode.
+
 **Brug Shodan + Censys parallelt**: Shodan har bredere banner-coverage
-og vuln-tags; Censys har dybere cert-historik og mere strukturerede
-service-data. Krydsreferer altid for high-value findings.
+og vuln-tags; Censys har dybere cert-historik (SAN-grafer pivoterer
+til glemte subdomæner) og mere strukturerede service-data.
+Krydsreferer altid for high-value findings.
 
 ## Etisk note
 

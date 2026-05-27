@@ -27,7 +27,7 @@ Street View, manuel visuel verifikation) ligger som `.md`-opskrifter.
 | `username-pivot.sh` | script | Søger et alias på tværs af 600+ sider via WhatsMyName-databasen. Default-limit 100; sæt `--limit 0` for fuld scan |
 | `subfinder-passive.sh` | script | Passiv subdomæne-enumerering via crt.sh + HackerTarget + OTX + urlscan. Ingen brute-force. `--resolve` tilføjer DoH-lookup |
 | `shodan-recon.sh` | script | Shodan API-wrapper: `host`/`search`/`count`/`facet`/`dns`/`reverse`/`info`. `count` + `facet` koster ingen query-credits. Kræver `SHODAN_API_KEY` |
-| `censys-recon.sh` | script | Censys API-wrapper: `host`/`search`/`aggregate`/`cert`/`cert-search`/`names`. Auto-detect mellem Search v2 (Basic Auth) og Platform API (Bearer). Stærk på cert-historik. Kræver `CENSYS_USER` + `CENSYS_TOKEN` (+ valgfri `CENSYS_ENDPOINT`) |
+| `censys-recon.sh` | script | Censys API-wrapper med to modes: **Platform v3** (Bearer PAT — `host`/`hosts`/`timeline`/`web`/`cert`/`certs`) og **Search v2** (Basic Auth — adds `search`/`aggregate`/`cert-search`/`account`). Auto-detect via `CENSYS_ENDPOINT`. Stærk på cert-historik |
 | `github-dork.sh` | script | Kører batch GitHub kode-søgninger med default-dork-bibliotek (secrets, configs, keys). Kræver `GITHUB_TOKEN`. `--dorks-file` for egen liste |
 | `hibp-check.sh` | script | Have I Been Pwned: `domain` mode er public; `email`/`pastes` mode kræver `HIBP_API_KEY` |
 | `attck-pivot.sh` | script | MITRE ATT&CK-bundle (cached): slå teknik/group/software op, søg fritekst, eller list groups der bruger en teknik |
