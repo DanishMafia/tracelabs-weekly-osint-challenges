@@ -33,6 +33,9 @@ Street View, manuel visuel verifikation) ligger som `.md`-opskrifter.
 | `attck-pivot.sh` | script | MITRE ATT&CK-bundle (cached): slå teknik/group/software op, søg fritekst, eller list groups der bruger en teknik |
 | `dnstwist-wrap.sh` | script | Lookalike-domain-tjek. Bruger `dnstwist` hvis installeret; ellers indbygget typo+homoglyph-generator + DoH-resolve |
 | `wallet-trace.sh` | script | Initial recon på BTC/ETH-adresse: balance, seneste tx, ERC-20-transfers. Auto-detect chain. Ingen API-key krævet for basic |
+| `urlscan-check.sh` | script | urlscan.io public search: `search`/`domain`/`brand`/`recent`. Ingen API-key krævet for basic. `URLSCAN_API_KEY` for højere rate-limits |
+| `ct-search.sh` | script | Direkte crt.sh Certificate Transparency search. Subkommando-fri: tag domain eller wildcard. Flags: `--recent N` (dage), `--org "Org Name"` |
+| `urlhaus-check.sh` | script | abuse.ch URLhaus malware/phishing-URL-feed: `host`/`url`/`tag`. **NB:** URLhaus indførte auth-krav i 2026 — vente på/anskaffe API-key |
 | `reverse-search.md` | opskrift | Trin-for-trin reverse image search-procedure (Google Lens, Yandex, TinEye) |
 | `verify-place.md` | opskrift | Krydsreferer en stednavns-hypotese mod Wikipedia og OSM |
 

@@ -16,6 +16,7 @@ del af paletten et engagement aktiverer.
 |---|---|---|
 | `nordlys-maritime.md` | Full-stack engagement (OSINT + red + blue) — fiktiv shipping-kunde med CEO-fraud, impersonation og insider-mistanke som anledning | 14/15 OSINT-skills, 4/4 red, 4/4 blue, 18/26 recipes |
 | `danmarks-nationalbank-fake-news.md` | Mock-tilbud på reelt offentligt udbud (DNB, deadline 8. juni 2026) — managed brand-protection-service "BrandVagten" med to scope-tiers (institution vs. + ledelse), tre-delt prisstruktur og take-down-workflow | 12/15 OSINT, 2/4 red (defensivt), 1/4 blue, 14/26 recipes |
+| `danmarks-nationalbank-baseline-scan.md` | **Reelt pilot-scan** udført med vores toolbox mod DNB's offentlige overflade (15 min, passiv OSINT). Demonstrerer typen af fund BrandVagten leverer dag 14. Fandt 18+ defensiv-portfolio + 3 3rd-party-ejede gaps + åbne typo-permutationer. Bruger 3 nye recipes (urlscan, ct-search, urlhaus) | 6 skills, 7 recipes inkl. 3 nye |
 
 ## Etisk note
 
