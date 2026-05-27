@@ -57,6 +57,9 @@ red-team-vinklen "hvad kan udnyttes".
 - `.claude/recipes/shodan-recon.sh` — Shodan-opslag (host, facet, count, DNS).
   Brug `facet` til at finde top-porte/org/asn for et mål uden at bruge
   query-credits, før du går videre til `host`/`search`.
+- `.claude/recipes/censys-recon.sh` — Censys-opslag (host, search,
+  aggregate, cert, cert-search). Brug `cert-search names: target.com`
+  til at trække fulde SAN-grafer og pivotere til glemte subdomæner.
 - `.claude/recipes/dnstwist-wrap.sh` — lookalike-domæner.
 
 ## Pivots og signaler

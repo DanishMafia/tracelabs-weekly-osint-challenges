@@ -34,9 +34,9 @@ internet-eksponeret tjeneste.
 - **Shodan CLI** – Command-line interface til Shodan.
 - **Photon** – Hurtig web-crawler til at indsamle URLs, e-mails, parametre og keys fra en side.
 
-## Companion-recipe
+## Companion-recipes
 
-`.claude/recipes/shodan-recon.sh` wrapper Shodan API:
+**Shodan** (`.claude/recipes/shodan-recon.sh`):
 
 ```bash
 export SHODAN_API_KEY=...
@@ -50,6 +50,30 @@ export SHODAN_API_KEY=...
 
 `count` og `facet` koster ingen query-credits — brug dem til volumen-
 spørgsmål før du laver `host`/`search`-opslag der trækker credits.
+
+**Censys** (`.claude/recipes/censys-recon.sh`) — stærk på cert-historik
+og host-attribuering:
+
+```bash
+# Search v2 (klassisk): API_ID + API_SECRET
+export CENSYS_USER=...    # API ID
+export CENSYS_TOKEN=...   # API secret
+
+# Platform API (nyere): e-mail + PAT + endpoint
+export CENSYS_USER=you@example.com
+export CENSYS_TOKEN=...
+export CENSYS_ENDPOINT=https://api.platform.censys.io
+
+./.claude/recipes/censys-recon.sh host 8.8.8.8
+./.claude/recipes/censys-recon.sh search 'services.service_name: HTTP and location.country_code: DK'
+./.claude/recipes/censys-recon.sh aggregate 'services.service_name: SSH' services.port
+./.claude/recipes/censys-recon.sh cert-search 'names: example.com'
+./.claude/recipes/censys-recon.sh names 1.2.3.4
+```
+
+**Brug Shodan + Censys parallelt**: Shodan har bredere banner-coverage
+og vuln-tags; Censys har dybere cert-historik og mere strukturerede
+service-data. Krydsreferer altid for high-value findings.
 
 ## Etisk note
 
