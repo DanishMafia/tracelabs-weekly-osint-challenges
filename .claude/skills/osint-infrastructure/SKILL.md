@@ -78,6 +78,22 @@ export CENSYS_TOKEN=<API_SECRET>
 Search v2-credentials (API ID + secret). Recipe fejler klart hvis du
 forsøger en subkommando der ikke matcher mode.
 
+**Punktum .dk lookup** (`.claude/recipes/whois-dk-hostmaster.sh`)
+— DK Hostmaster er rebrandet til **Punktum dk** (`punktum.dk`).
+Recipe'n tjekker .dk-TLD-validering, prober Punktum-endpointet,
+forsøger port-43 WHOIS (`whois.punktum.dk`) og printer den korrekte
+manuelle lookup-URL:
+
+```bash
+./.claude/recipes/whois-dk-hostmaster.sh domain nationalbanken.dk
+./.claude/recipes/whois-dk-hostmaster.sh bulk nationalbanken.dk,nordea.dk
+```
+
+**Begrænsning:** Punktum's webform er CSRF-/JS-renderet og kan IKKE
+scrapes direkte. Recipe'n leverer derfor en best-effort port-43-prøve
++ canonical URL. Til automation: kommerciel passive-DNS-feed
+(SecurityTrails, DNSDB, DomainTools) eller headless browser (Playwright).
+
 **Brug Shodan + Censys parallelt**: Shodan har bredere banner-coverage
 og vuln-tags; Censys har dybere cert-historik (SAN-grafer pivoterer
 til glemte subdomæner) og mere strukturerede service-data.

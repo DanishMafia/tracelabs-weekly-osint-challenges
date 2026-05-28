@@ -98,6 +98,26 @@ muligvis er AI-genereret eller manipuleret. Komplementerer
 - **Spektral-cutoff** ved 8 kHz eller lignende = TTS-output.
 - **Prosodi:** unaturlig betoning på fyldord ("the", "and").
 
+## Companion-recipes
+
+**YouTube deepfake-discovery** (`.claude/recipes/youtube-search.sh`) —
+YouTube Data API v3 wrapper til at finde mistænkte deepfake-/AI-scam-
+videoer der bruger et brand- eller person-navn:
+
+```bash
+export YOUTUBE_API_KEY=<key fra Google Cloud Console>
+./.claude/recipes/youtube-search.sh search "Christian Kettel Thomsen"
+./.claude/recipes/youtube-search.sh channel "Nationalbanken"
+./.claude/recipes/youtube-search.sh video <video-id>           # stats + tags + desc
+./.claude/recipes/youtube-search.sh channel-videos <channel-id>
+./.claude/recipes/youtube-search.sh deepfake-scan "Danmarks Nationalbank"
+```
+
+`deepfake-scan` kører pre-konfigurerede søgninger med suffix-varianter
+(`<brand>`, `<brand> deepfake`, `<brand> fake`, `<brand> ai`,
+`<brand> scam`, `<brand> crypto`) → bredt net for AI-misuse mod en
+identitet. Kost: 1 search = 100 quota-units (10k/dag gratis).
+
 ## C2PA quick-ref
 
 ```bash

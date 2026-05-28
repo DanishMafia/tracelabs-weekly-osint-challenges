@@ -66,6 +66,27 @@ Felter du typisk vil have klar før kampagnen sendes:
 - Sidste nyheds-item (M&A, ny CEO, ny intranet-rollout)
 - SPF/DMARC-status → spoof eller lookalike
 
+## Companion-recipes
+
+**Google Safe Browsing screening** (`.claude/recipes/safebrowsing-check.sh`)
+— klassificér én eller flere URLs mod Googles offentlige threat-database
+(MALWARE, SOCIAL_ENGINEERING, UNWANTED_SOFTWARE, POTENTIALLY_HARMFUL).
+Bruges typisk til at:
+
+- Krydstjekke lookalike-domæner FØR de bruges → hvis du er flagget
+  inden engagement starter, vælg et nyt domæne.
+- Verificere mistænkte URLs fra trusler/breach-feeds (defensiv brug).
+- Baseline-screene en domæne-portfølje før HIBP/dehashed-pivots.
+
+```bash
+export SAFEBROWSING_API_KEY=<key fra Google Cloud Console>
+./.claude/recipes/safebrowsing-check.sh url https://nationalbanken.xyz
+./.claude/recipes/safebrowsing-check.sh batch https://a.com,https://b.com
+cat suspect-urls.txt | ./.claude/recipes/safebrowsing-check.sh stdin
+```
+
+Gratis tier: 10k lookups/dag. Batch op til 500 URLs per call.
+
 ## Etisk note
 
 - **Kun mod skriftligt autoriseret scope og pretext.** Phishing uden
