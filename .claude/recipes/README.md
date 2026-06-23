@@ -33,6 +33,18 @@ Street View, manuel visuel verifikation) ligger som `.md`-opskrifter.
 | `attck-pivot.sh` | script | MITRE ATT&CK-bundle (cached): slå teknik/group/software op, søg fritekst, eller list groups der bruger en teknik |
 | `dnstwist-wrap.sh` | script | Lookalike-domain-tjek. Bruger `dnstwist` hvis installeret; ellers indbygget typo+homoglyph-generator + DoH-resolve |
 | `wallet-trace.sh` | script | Initial recon på BTC/ETH-adresse: balance, seneste tx, ERC-20-transfers. Auto-detect chain. Ingen API-key krævet for basic |
+| `urlscan-check.sh` | script | urlscan.io public search: `search`/`domain`/`brand`/`recent`. Ingen API-key krævet for basic. `URLSCAN_API_KEY` for højere rate-limits |
+| `ct-search.sh` | script | Direkte crt.sh Certificate Transparency search. Subkommando-fri: tag domain eller wildcard. Flags: `--recent N` (dage), `--org "Org Name"` |
+| `urlhaus-check.sh` | script | abuse.ch URLhaus malware/phishing-URL-feed: `host`/`url`/`tag`. **NB:** URLhaus indførte auth-krav i 2026 — vente på/anskaffe API-key |
+| `socmint-bluesky.sh` | script | Bluesky SOCMINT: `profile`/`search-posts`/`search-actors`/`feed`/`check-handles`. Public API, ingen auth. Stærkt signal — actor-search finder selv-angivne employer-tilknytninger |
+| `socmint-reddit.sh` | script | Reddit SOCMINT: `search`/`subreddit`/`user`/`in-subreddit`/`mentions`. Ingen auth for read, rate-limit varieret. `mentions` scanner globalt + r/Denmark + r/dkfinance + r/europe |
+| `socmint-mastodon.sh` | script | Fediverse SOCMINT: `lookup`/`instance-search`/`public-feed`/`check-handles`. Per-instance API. Hashtag-timeline virker uden auth |
+| `socmint-meta-ads.sh` | script | Meta Ad Library search. Kræver `META_AD_LIBRARY_TOKEN` (gratis Meta dev-app). Søger annoncer der nævner brand i specifik country |
+| `socmint-telegram.sh` | script | Telegram passive recon via t.me public previews: `channel`/`index-search`/`check-handles`. DDG site:t.me fallback til index-search. Begrænset uden MTProto/Bot-auth |
+| `appstore-check.sh` | script | Apple iTunes Search API + Google Play HTML-scrape: `apple`/`google`/`bank-check`/`verify`. Brand-protection mod fake banking-apps. Ingen auth krævet |
+| `rdap-recon.sh` | script | RDAP (HTTPS-WHOIS) via rdap.org-proxy: `domain`/`bulk`/`ip`/`registrar`. Virker hvor port-43-WHOIS er blokeret af firewall. Understøtter .com/.net/.org/.eu/.io m.fl. (.dk har desværre ingen RDAP) |
+| `headers-security.sh` | script | Security headers + TLS audit: HSTS, CSP, X-Frame, X-Content, Referrer, Permissions, COOP, COEP. A-F score. Single-URL eller `--batch d1,d2,...`. Afslører ofte fake-sites pga. dårlig hygiejne |
+| `brand-permutations.sh` | script | Udvidet permutation-generator (omit/insert/repeat/swap/homoglyph-ASCII/IDN-homoglyph/bitsquat/prefix-suffix/TLD-variants). 200+ kandidater pr. brand. `--resolve` + `--only-registered` for DoH-resolve |
 | `reverse-search.md` | opskrift | Trin-for-trin reverse image search-procedure (Google Lens, Yandex, TinEye) |
 | `verify-place.md` | opskrift | Krydsreferer en stednavns-hypotese mod Wikipedia og OSM |
 
